@@ -25,6 +25,7 @@ RUN useradd -u 1000 -c www -s /usr/sbin/nologin -M -d /var/www www > /dev/null 2
 
 ENV APACHE_RUN_USER www
 ENV APACHE_RUN_GROUP www
+ENV APACHE_DOC_ROOT ""
 
 ENV NULLMAILER_HOST localhost
 ENV NULLMAILER_PORT 1025
@@ -35,3 +36,4 @@ COPY src /var/www/html
 # Copy configuration
 COPY config/php.ini /usr/local/etc/php
 COPY config/docker-php-entrypoint /usr/local/bin
+COPY config/000-default.conf /etc/apache2/sites-available
