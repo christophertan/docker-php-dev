@@ -15,19 +15,15 @@ RUN echo "nullmailer nullmailer/relayhost string localhost smtp --port=1025" | d
 # Install packages
 RUN DEBIAN_FRONTEND=non-interactive apt-get update && apt-get -y install \
       sqlite3 \
-      php5-gd \
-      php5-curl \
-      php5-mysql \
-      php5-pgsql \
-      php5-mcrypt \
-      php5-sqlite \
       zlib1g-dev \
       libpng-dev \
       libfreetype6-dev \
       libjpeg62-turbo-dev \
+      libxml2-dev \
       nullmailer && \
       docker-php-ext-install mysqli && \
       docker-php-ext-install mbstring && \
+      docker-php-ext-install soap && \
       docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/  && \
       docker-php-ext-install gd
 
